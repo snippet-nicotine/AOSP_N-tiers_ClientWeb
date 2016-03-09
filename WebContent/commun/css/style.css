@@ -1,0 +1,107 @@
+html, body{
+	margin :0;
+	padding: 0;
+	height: 100%;
+}
+
+body{
+	background-image: url(../ressources/accueil.jpg);
+	background-size: cover;
+	box-sizing: border-box;
+	background-position: 50% 35%;
+	background-repeat: no-repeat;
+	
+	
+	color: #fff;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	
+
+}
+
+a{
+	color:#fff;
+}
+
+h1,h2{
+	margin: 0px;	
+}
+
+h1{	
+	font-size: 68px;
+}
+
+h2{
+	font-size: 33px;
+	font-style: italic; 
+}
+
+#slogan, #connexion, #inscription{
+	width: 52%;	
+}
+
+#slogan{
+	margin: 150px auto 0px auto;	
+}
+
+#connexion{
+	margin: 50px auto 0px auto;
+}
+
+#connexion > div{
+	width: 85%;
+	margin: auto;
+}
+
+#connexion *{
+	font-size: 16px;
+}
+
+#connexion input{
+	width: 35%;	
+}
+
+button, input{
+	border-bottom-color: rgb(169, 169, 169);
+	border-width: 1px;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-top-width: 1px;
+	border-left-color: rgb(169, 169, 169);
+	border-right-color: rgb(169, 169, 169);
+	border-top-color: rgb(169, 169, 169);
+	border-style: solid;
+	background-color: transparent;
+	border-radius: 5px;
+	
+	color: #fff;
+}
+
+
+#connexion button{
+	width: 25%;
+}
+
+#inscription{
+	margin: 100px auto;
+	text-align: center;
+	font-size:22px;
+}
+
+.blur{
+	width: 100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.fond-transparent{
+	display : block;
+	background-color: rgba(0,0,0,0.5);
+	padding: 6px;
+}
+
+.logo{
+	margin:  20px 120px;
+}
