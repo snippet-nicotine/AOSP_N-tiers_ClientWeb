@@ -3,7 +3,7 @@
   <display-name>AOSP_N-tiers_ClientWeb</display-name>
   
   <welcome-file-list>  
-    <welcome-file>aosp/</welcome-file>
+    <welcome-file>/Dispatcher</welcome-file>
   </welcome-file-list>
   
   <session-config>

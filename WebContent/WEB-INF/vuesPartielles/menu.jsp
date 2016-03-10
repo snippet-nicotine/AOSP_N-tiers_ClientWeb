@@ -16,10 +16,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Potagers <span class="sr-only">(current)</span></a></li>
+        <li><a href="<%=request.getContextPath() %>/aosp/potagers">Potagers</a></li>
         <li><a href="#">Plantes</a></li>
         <li><a href="#">Planning</a></li>        
         <li><a href="#">Utilisateurs</a></li>
+        <li><a href="<%=request.getContextPath() %>/aosp/documents">Documents</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

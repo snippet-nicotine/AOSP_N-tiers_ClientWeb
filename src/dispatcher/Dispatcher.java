@@ -1,4 +1,5 @@
-package potager.controlleur;
+package dispatcher;
+
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import potager.config.Url;
+import controlleur.ControlleurConnexion;
+import document.config.Url;
 
 /**
- * Servlet implementation class DispatcherGestionPotager
+ * Servlet implementation class DispatcherGestionDocument
  */
 @WebServlet(		
-		name        = "/DispatcherGestionPotager",
+		name        = "/Dispatcher",
 		urlPatterns = "/aosp/*"
 		)
-public class DispatcherGestionPotager extends HttpServlet {
+public class Dispatcher extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -41,6 +43,10 @@ public class DispatcherGestionPotager extends HttpServlet {
 			case Url.CONTROLLEUR_GESTION_POTAGER:			
 				request.getRequestDispatcher("/ControlleurPotagers").forward(request, response);
 				break;
+		
+			case Url.CONTROLLEUR_GESTION_DOCUMENT:			
+				request.getRequestDispatcher("/ControlleurDocuments").forward(request, response);
+				break;
 			
 			case Url.CONTROLLEUR_GESTION_CARRE:
 				request.getRequestDispatcher("/ControlleurCarres").forward(request, response);
@@ -56,14 +62,14 @@ public class DispatcherGestionPotager extends HttpServlet {
 				break;
 			
 			case "message":
-				request.getRequestDispatcher("/PotagerEnvoiMessage").forward(request, response);	
+				request.getRequestDispatcher("/DocumentEnvoiMessage").forward(request, response);	
 				break;
 
 			default:
 				
 				boolean isLogged = ControlleurConnexion.isLogged(request);		
 
-				if( isLogged )  response.sendRedirect(request.getContextPath() + "/aosp/potagers");
+				if( isLogged )  response.sendRedirect(request.getContextPath() + "/aosp/documents");
 				else      		response.sendRedirect(request.getContextPath() + "/commun/html/connexion.jsp");					
 				
 		}
