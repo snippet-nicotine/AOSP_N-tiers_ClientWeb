@@ -7,13 +7,13 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/document/css/bootstrap-3.3.6-dist/css/bootstrap.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/document/css/style.css">
+
+	<%@ include file="/WEB-INF/vuesPartielles/css.jsp"%>
 	
+	<title>Administration des documents</title>
 	
-<title>Administration des documents</title>
 </head>
+
 <body>
 	
 	<%@ include file="/WEB-INF/vuesPartielles/header.jsp"%>

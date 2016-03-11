@@ -130,7 +130,7 @@ public class ControlleurPotagers extends HttpServlet {
 					break;
 					
 				default:
-					afficherPotager(potager, request, response);
+					afficherPotager(idPotager, request, response);
 					break;
 					
 				}
@@ -210,7 +210,7 @@ public class ControlleurPotagers extends HttpServlet {
 					break;
 					
 				default:
-					afficherPotager(potager, request, response);
+					afficherPotager(idPotager, request, response);
 					break;				
 					
 				}
@@ -295,9 +295,18 @@ public class ControlleurPotagers extends HttpServlet {
 				
 	}
 
-	private void afficherPotager(Potager potager, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void afficherPotager(int idPotager, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		response.getWriter().append("Afficher potager:" + potager);
+		Potager potager;
+		try {
+			potager = serviceGestionPotager.getPotager(idPotager);
+			request.setAttribute("potager", potager);
+			request.getRequestDispatcher("/potager/voirPotager.jsp").forward(request,response);
+			
+		} catch (DaoPotagerGetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

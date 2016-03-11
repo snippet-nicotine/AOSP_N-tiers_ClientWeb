@@ -81,7 +81,7 @@ var gestionPotager = {
 			var url =  "/" + id + "/modifier";
 			this.submit(this.formModifier, url, "POST");
 			
-		},
+		}, 
 		
 		supprimer : function(id){
 			
