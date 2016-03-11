@@ -114,7 +114,7 @@
 								
 								<td>${potager.codePostal}</td>
 								
-								<td> <a href="#" > ${potager.proprietaireNom} </a> </td>
+								<td> <a href="#" > ${potager.proprietaire.nom} </a> </td>
 								
 								<td>
 									<a class="bouton-afficher-modifier"  href="#">

@@ -2,11 +2,18 @@ package potager.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //TODO: Faire la javadoc
+@Entity
+@Table(name="aosp2_terrain")
 public abstract class Terrain implements Serializable{
 
 	private static final long serialVersionUID = -4558213931653633895L;
 	
+	@Id
 	private int id;
 	private String nom;
 	private int longueur;
@@ -55,14 +62,6 @@ public abstract class Terrain implements Serializable{
 
 	public void setLargeur(int largeur) {
 		this.largeur = largeur;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	
