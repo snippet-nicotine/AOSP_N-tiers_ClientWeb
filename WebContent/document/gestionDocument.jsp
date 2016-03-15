@@ -59,6 +59,15 @@
 				    		data-toggle="tooltip" 
 				    		title="${ erreurExemplaires != null ? erreurExemplaires : 'Entrez la description du document' }">
 				  </div>
+				  
+				  <div class="form-group ${ erreurLocalisation != null ? 'has-error' : '' }">
+				    <label for="localisation">Localisation</label>
+				    <select name="localisation">
+				    	<c:forEach items="${localisations}" var="localisation">			    
+					 		 <option>${localisation.lieu}</option>
+					  	</c:forEach>
+					</select>
+				  </div>
 				  		  
 				  <button type="submit" class="btn btn-default">+ Ajouter</button>
 				  

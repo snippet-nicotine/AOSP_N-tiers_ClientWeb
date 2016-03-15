@@ -19,12 +19,15 @@ import controlleur.ControlleurConnexion;
 import document.clientServeur.ServiceGestionDocument;
 import document.config.Url;
 import document.entity.Document;
+import document.entity.Localisation;
 import document.service.exception.DaoDocumentAjoutException;
 import document.service.exception.DaoDocumentGetException;
 import document.service.exception.DaoDocumentModificationException;
 import document.service.exception.DaoDocumentQueryException;
 import document.service.exception.DaoDocumentSuppressionException;
+import document.service.exception.DaoLocalisationException;
 import document.service.exception.DescriptionDocumentException;
+import document.service.exception.DocumentException;
 import document.service.exception.ExemplairesDocumentException;
 import document.service.exception.TitreDocumentException;
 
@@ -275,6 +278,11 @@ public class ControlleurDocuments extends HttpServlet {
 			request.setAttribute("erreurExemplaires", e.getMessage() );
 			request.setAttribute("isModifier", true);
 			LOG.error( e.getMessage() );
+			
+		} catch (DocumentException e) {
+			request.setAttribute("erreurExemplaires", e.getMessage() );
+			request.setAttribute("isModifier", true);
+			LOG.error( e.getMessage() );
 		}
 		
 		LOG.debug("Modification de document");
@@ -305,18 +313,21 @@ public class ControlleurDocuments extends HttpServlet {
 		
 		LOG.trace(" GET documents/  => Accéder à l'ihm de gestion de document ");
 		
-		List<Document> documents;
+		List<Document>     documents;
+		List<Localisation> localisations;
 		
 		try {
 			documents = serviceGestionDocument.listerDocument();
+			localisations = serviceGestionDocument.listerLocalisation();
 			request.setAttribute("documents", documents);
+			request.setAttribute("localisations", localisations);
 			request.setAttribute("nbAnnulations", serviceGestionDocument.getNombreAnnulations() );
 			
 			LOG.debug("variable documents: " + documents);
 			LOG.debug("request ContextPath: " + request.getContextPath() );
 			LOG.debug("request param: " + request.getParameter("titre") );
 			
-		} catch (DaoDocumentQueryException e) {
+		} catch (DaoDocumentQueryException | DaoLocalisationException e) {
 			
 			request.setAttribute("erreur", e.getMessage() );
 			e.printStackTrace();
@@ -331,7 +342,7 @@ public class ControlleurDocuments extends HttpServlet {
 		
 		try {
 			
-			Document document = documentFromRequest(request, "");			
+			Document document = documentFromRequest(request, "");		
 			serviceGestionDocument.ajouterDocument(document);
 			
 		} catch (TitreDocumentException e) {
@@ -350,6 +361,9 @@ public class ControlleurDocuments extends HttpServlet {
 			
 		} catch (DaoDocumentAjoutException e) {
 			request.setAttribute("erreur", e.getMessage() );
+			
+		} catch (DocumentException e) {
+			request.setAttribute("erreurLocalisation", e.getMessage() );
 		}
 		
 		afficherFormulaireGestion(request, response);
